@@ -53,7 +53,6 @@ class QueryResults {
                 } else {
                     node.addClass("queryHilight");
                     node[0].data("captureGroup", qVdata);
-                    console.log(node[0].classes());
                 }
             });
         });
@@ -157,9 +156,10 @@ function loadJson(jsonDot: any): void {
     const valign = disjointSet();
     cy.add(jsonDot.objects.map((node) => {
         const id = id2node(node._gvid);
-        var extra = "f";
+        let extra = "f";
         if (node.label.includes("FrameState"))
             extra = "t";
+        const pos = node.pos.split(',');
         return {
             'group': 'nodes',
             'data': {
@@ -168,7 +168,7 @@ function loadJson(jsonDot: any): void {
                 'name': node.name,
                 'extra': extra
             },
-            'position': { x: 0, y: 0 }
+            'position': { x: parseInt(pos[0]), y: -parseInt(pos[1]) }
         }
     }));
     cy.add(jsonDot.edges.map((edge) => {
@@ -243,7 +243,7 @@ function loadJson(jsonDot: any): void {
     };
     layout = cy.layout(layoutOptions);
     renderHiding();
-    layout.run();
+    //layout.run();
     //cy.reset();
 }
 
