@@ -1,0 +1,43 @@
+{
+  "graph": "digraph G {\n  0 [ label=\"0|StartNode\" ];\n  1 [ label=\"1|Parameter(0)\" ];\n  2 [ label=\"2|Parameter(1)\" ];\n  3 [ label=\"3|Parameter(2)\" ];\n  4 [ label=\"4|Parameter(3)\" ];\n  5 [ label=\"5|FrameState@0\" ];\n  6 [ label=\"6|+\" ];\n  7 [ label=\"7|+\" ];\n  8 [ label=\"8|+\" ];\n  9 [ label=\"9|LoadField#out\" ];\n  10 [ label=\"10|MethodCallTarget\" ];\n  11 [ label=\"11|ExceptionObject\" ];\n  12 [ label=\"12|FrameState@24\" ];\n  14 [ label=\"14|Invoke#PrintStream.println\" ];\n  15 [ label=\"15|KillingBegin\" ];\n  16 [ label=\"16|FrameState@27\" ];\n  17 [ label=\"17|Return\" ];\n  18 [ label=\"18|Unwind\" ];\n  0 -> 9 [ color=\"red\" style=\"\" label=\"next\" ];\n  1 -> 5 [ color=\"blue\" style=\"\" label=\"values\" ];\n  1 -> 6 [ color=\"blue\" style=\"\" label=\"x\" ];\n  2 -> 5 [ color=\"blue\" style=\"\" label=\"values\" ];\n  2 -> 6 [ color=\"blue\" style=\"\" label=\"y\" ];\n  3 -> 5 [ color=\"blue\" style=\"\" label=\"values\" ];\n  3 -> 7 [ color=\"blue\" style=\"\" label=\"x\" ];\n  4 -> 5 [ color=\"blue\" style=\"\" label=\"values\" ];\n  4 -> 7 [ color=\"blue\" style=\"\" label=\"y\" ];\n  5 -> 0 [ color=\"blue\" style=\"\" label=\"stateAfter\" ];\n  6 -> 8 [ color=\"blue\" style=\"\" label=\"x\" ];\n  7 -> 8 [ color=\"blue\" style=\"\" label=\"y\" ];\n  8 -> 10 [ color=\"blue\" style=\"\" label=\"arguments\" ];\n  8 -> 12 [ color=\"blue\" style=\"\" label=\"values\" ];\n  8 -> 16 [ color=\"blue\" style=\"\" label=\"values\" ];\n  8 -> 17 [ color=\"blue\" style=\"\" label=\"result\" ];\n  9 -> 14 [ color=\"red\" style=\"\" label=\"next\" ];\n  9 -> 10 [ color=\"blue\" style=\"\" label=\"arguments\" ];\n  10 -> 14 [ color=\"blue\" style=\"\" label=\"callTarget\" ];\n  11 -> 18 [ color=\"red\" style=\"\" label=\"next\" ];\n  11 -> 12 [ color=\"blue\" style=\"\" label=\"values\" ];\n  11 -> 18 [ color=\"blue\" style=\"\" label=\"exception\" ];\n  12 -> 11 [ color=\"blue\" style=\"\" label=\"stateAfter\" ];\n  14 -> 15 [ color=\"red\" style=\"\" label=\"next\" ];\n  14 -> 11 [ color=\"red\" style=\"\" label=\"exceptionEdge\" ];\n  15 -> 17 [ color=\"red\" style=\"\" label=\"next\" ];\n  16 -> 14 [ color=\"blue\" style=\"\" label=\"stateAfter\" ];\n}\n",
+  "queryResults": [
+    {
+      "x": [
+        1
+      ],
+      "arith": [
+        6
+      ],
+      "y": [
+        2
+      ]
+    },
+    {
+      "x": [
+        3
+      ],
+      "arith": [
+        7
+      ],
+      "y": [
+        4
+      ]
+    },
+    {
+      "x": [
+        6
+      ],
+      "arith": [
+        8
+      ],
+      "y": [
+        7
+      ]
+    }
+  ],
+  "queryVertices": {
+    "arith": "arithmeticNode",
+    "x": "x",
+    "y": "y"
+  }
+}

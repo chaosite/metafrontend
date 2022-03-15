@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="public/index.js"></script>
+    <style>
+      .container {
+          display: grid;
+          grid-template-columns: 65% repeat(1, 1fr);
+          gap: 10px;
+          grid-auto-rows: minmax(500px, auto);
+      }
+      .left {
+          grid-column: 1;
+          grid-row: 1 / 2;
+      }
+      .right-top {
+          grid-column: 2;
+          grid-row: 1;
+      }
+      .right-bottom {
+          padding: 10px 10px 10px 10px;
+          grid-column: 2;
+          grid-row: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="root-obj">
+      <div id="mynetwork" class="left"></div>
+      <div id="form">
+        <form>
+          <div class="right-top">
+            <textarea id="code-area">import il.ac.technion.cs.mipphd.graal.utils.MethodToGraph
+import il.ac.technion.cs.mipphd.graal.graphquery.compileAndQuery
+import kotlin.reflect.jvm.javaMethod
+
+val query = """
+digraph G {
+   arith [ label="(?P<arithmeticNode>)|1 = 1" ];
+   x [ label="(?P<x>)|1 = 1" ];
+   y [ label="(?P<y>)|1 = 1" ];
+
+   x -> arith [ label="is('DATA') and name() = 'x'" ];
+   y -> arith [ label="is('DATA') and name() = 'y'" ];
+}
+"""
+
+fun f(x: Long, y: Long, w: Long, z: Long): Long {
+    val a = x + y
+    val b = w + z
+    val c = a + b
+    println(c)
+    return c
+}
+
+fun main() {
+    val adapted = MethodToGraph().getAdaptedCFG(::f.javaMethod)
+    val json = compileAndQuery(adapted, query)
+
+    println(json)
+}</textarea>
+          </div>
+          <div class="right-bottom">
+            <p>
+              <button type="button" onclick="executeHandler()">Execute</button>
+              <button type="button" onclick="queryPrevHandler()">Prev</button>
+              <button type="button" onclick="queryNextHandler()">Next</button>
+            </p>
+            <p>
+              <input type="checkbox" id="hideExtras" onchange="extrasCheckHandler()">
+              <label for="hideExtras">Hide extras</label>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
