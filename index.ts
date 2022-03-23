@@ -244,7 +244,8 @@ function loadJson(jsonDot: any): void {
     layout = cy.layout(layoutOptions);
     renderHiding();
     //layout.run();
-    //cy.reset();
+    cy.reset();
+    cy.fit();
 }
 
 function renderHiding() {
