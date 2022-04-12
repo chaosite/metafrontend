@@ -1,0 +1,20 @@
+digraph loopIterator {
+  n1620489784 [ label="is('LoopBeginNode')" ];
+  n1120588348 [ label="not (is('IfNode'))" ];
+  n1004088069 [ label="is('IfNode')" ];
+  n1067474054 [ label="is('ValuePhiNode')" ];
+  n1792150076 [ label="is('calc.AddNode')" ];
+  n2115858024 [ label="is('calc.CompareNode')" ];
+  n208597933 [ label="is('ValueNode')" ];
+  n823646922 [ label="(?P<iterator>)|is('java.LoadIndexedNode')" ];
+  n1265546558 [ label="(?P<source>)|is('ValueNode')" ];
+  n1620489784 -> n1120588348 [ label="*|is('CONTROL')" ];
+  n1120588348 -> n1004088069 [ label="is('CONTROL')" ];
+  n1620489784 -> n1067474054 [ label="(name()) = ('merge')" ];
+  n1792150076 -> n1067474054 [ label="is('DATA')" ];
+  n1067474054 -> n1792150076 [ label="is('DATA')" ];
+  n1067474054 -> n2115858024 [ label="is('DATA')" ];
+  n208597933 -> n1067474054 [ label="not ((name()) = ('merge'))" ];
+  n1067474054 -> n823646922 [ label="(name()) = ('index')" ];
+  n1265546558 -> n823646922 [ label="(name()) = ('array')" ];
+}

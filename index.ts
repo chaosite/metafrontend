@@ -75,6 +75,95 @@ class QueryResults {
 
 export var queryResults: QueryResults = null;
 
+function initPuzzle(): void {
+    const container = document.getElementById("puzzle");
+    cy = cytoscape({
+        container: container,
+        style: [ // the stylesheet for the graph
+            {
+                selector: 'node',
+                style: {
+                    'background-color': '#666',
+                    'color': '#fff',
+                    'label': 'data(label)',
+                    'shape': 'round-rectangle',
+                    'width': '11em',
+                    'text-valign': 'center',
+                    'text-wrap': 'ellipsis'
+                }
+            },
+            {
+                selector: 'node.queryHilight',
+                style: {
+                    'background-color': '#EE8',
+                    'color': '#000'
+                }
+            },
+            {
+                selector: '.hidden',
+                style: {
+                    display: 'none'
+                }
+            },
+            {
+                selector: 'edge',
+                style: {
+                    'width': 3,
+                    'line-color': '#ccc',
+                    'target-arrow-color': '#ccc',
+                    'target-arrow-shape': 'triangle',
+                    'curve-style': 'bezier',
+                    'label': 'data(label)',
+                    'text-wrap': 'ellipsis'
+                }
+            }
+        ],
+    });
+    const puzzleJson = JSON.parse(fs.readFileSync("./test_cases/queries/puzzle.json", "UTF-8"));
+    const nodes = puzzleJson.links.map((link) => {
+        return [{
+            group: "nodes", 
+            data: {
+                id: link.src[0],
+                name: link.src[0],
+                label: link.src[0]
+            }
+        },
+        {
+            group: "nodes", 
+            data: {
+                id: link.target[0],
+                name: link.target[0],
+                label: link.target[0]
+            }
+        },
+        {
+            group: "edges", 
+            data: {
+                id: link.src[0]+":"+link.src[1]+"-"+link.target[0]+":"+link.target[1],
+                source: link.src[0],
+                target: link.target[0]
+            }
+        },
+    ]
+    }).flat()
+    cy.add(nodes)
+    const layoutOptions = {
+        name: 'breadthfirst',
+        padding: 30,
+        directed: true,
+        fit: true,
+        spacingFactor: 1.75,
+        avoidOverlap: true,
+
+    };
+    layout = cy.layout(layoutOptions);
+    //renderHiding();
+    layout.run();
+    //cy.reset();
+    cy.fit();
+}
+
 // create a network
 function initFunc(): void {
     const container = document.getElementById("mynetwork");
@@ -257,8 +346,10 @@ function renderHiding() {
 
 // After all this await business, we *might* have already loaded the DOM...
 if (document.readyState == 'loading') {
+    document.addEventListener('DOMContentLoaded', initPuzzle);
     document.addEventListener('DOMContentLoaded', initFunc);
 } else {
+    initPuzzle();
     initFunc();
 }
 

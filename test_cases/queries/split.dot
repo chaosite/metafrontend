@@ -1,0 +1,16 @@
+digraph split {
+  n234081595 [ label="(?P<input>)|is('ValueNode')" ];
+  n880088753 [ label="(is('java.LoadFieldNode')) or (is('java.LoadIndexedNode'))" ];
+  n1092275827 [ label="(?P<splitOutput1>)|(is('java.LoadFieldNode')) or (is('java.LoadIndexedNode'))" ];
+  n1376995710 [ label="(is('java.LoadFieldNode')) or (is('java.LoadIndexedNode'))" ];
+  n1313803539 [ label="(?P<splitOutput2>)|(is('java.LoadFieldNode')) or (is('java.LoadIndexedNode'))" ];
+  n1192104176 [ label="not ((is('java.LoadFieldNode')) or (is('java.LoadIndexedNode')))" ];
+  n417389805 [ label="not ((is('java.LoadFieldNode')) or (is('java.LoadIndexedNode')))" ];
+  n234081595 -> n880088753 [ label="*|is('DATA')" ];
+  n234081595 -> n1376995710 [ label="*|is('DATA')" ];
+  n880088753 -> n1092275827 [ label="is('DATA')" ];
+  n1376995710 -> n1313803539 [ label="is('DATA')" ];
+  n1313803539 -> n1192104176 [ label="is('DATA')" ];
+  n1092275827 -> n417389805 [ label="is('DATA')" ];
+}
+

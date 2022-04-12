@@ -1,0 +1,9 @@
+digraph invokeOneParam2 {
+  n1220858599 [ label="(?P<invokeOutput>)|(is('InvokeWithExceptionNode')) or (is('InvokeNode'))" ];
+  n1089592626 [ label="is('java.MethodCallTargetNode')" ];
+  n612513502 [ label="(?P<invokeInput>)|is('ValueNode')" ];
+  n754261991 [ label="is('ValueNode')" ];
+  n1089592626 -> n1220858599 [ label="is('DATA')" ];
+  n612513502 -> n1089592626 [ label="is('DATA')" ];
+  n1220858599 -> n754261991 [ label="is('DATA')" ];
+}

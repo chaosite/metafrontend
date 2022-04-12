@@ -5,9 +5,9 @@
     <style>
       .container {
           display: grid;
-          grid-template-columns: 65% repeat(1, 1fr);
+          grid-template-columns: repeat(1, 1fr) 50%;
           gap: 10px;
-          grid-auto-rows: minmax(500px, auto);
+          grid-auto-rows: minmax(800px, auto);
       }
       .left {
           grid-column: 1;
@@ -26,41 +26,12 @@
   </head>
   <body>
     <div class="container" id="root-obj">
-      <div id="mynetwork" class="left"></div>
-      <div id="form">
+      <div id="puzzle" class="left">
+      </div>
+      <div id="mynetwork" class="right-top"></div>
+      <div id="form" class="right-bottom">
         <form>
-          <div class="right-top">
-            <textarea id="code-area">import il.ac.technion.cs.mipphd.graal.utils.MethodToGraph
-import il.ac.technion.cs.mipphd.graal.graphquery.compileAndQuery
-import kotlin.reflect.jvm.javaMethod
-
-val query = """
-digraph G {
-   arith [ label="(?P<arithmeticNode>)|1 = 1" ];
-   x [ label="(?P<x>)|1 = 1" ];
-   y [ label="(?P<y>)|1 = 1" ];
-
-   x -> arith [ label="is('DATA') and name() = 'x'" ];
-   y -> arith [ label="is('DATA') and name() = 'y'" ];
-}
-"""
-
-fun f(x: Long, y: Long, w: Long, z: Long): Long {
-    val a = x + y
-    val b = w + z
-    val c = a + b
-    println(c)
-    return c
-}
-
-fun main() {
-    val adapted = MethodToGraph().getAdaptedCFG(::f.javaMethod)
-    val json = compileAndQuery(adapted, query)
-
-    println(json)
-}</textarea>
-          </div>
-          <div class="right-bottom">
+          <div >
             <p>
               <button type="button" onclick="executeHandler()">Execute</button>
               <button type="button" onclick="queryPrevHandler()">Prev</button>

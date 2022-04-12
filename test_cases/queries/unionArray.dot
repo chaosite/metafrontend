@@ -1,0 +1,12 @@
+digraph unionArray {
+  n501614366 [ label="is('java.StoreIndexedNode')" ];
+  n609499248 [ label="is('calc.AddNode')" ];
+  n153552147 [ label="(?P<array>)|is('ValueNode')" ];
+  n1030048215 [ label="(?P<index>)|is('ValueNode')" ];
+  n955736499 [ label="(?P<value>)|is('ValueNode')" ];
+  n153552147 -> n501614366 [ label="(is('DATA')) and ((name()) = ('array'))" ];
+  n955736499 -> n501614366 [ label="(is('DATA')) and ((name()) = ('value'))" ];
+  n1030048215 -> n501614366 [ label="(is('DATA')) and ((name()) = ('index'))" ];
+  n1030048215 -> n609499248 [ label="is('DATA')" ];
+  n609499248 -> n1030048215 [ label="is('DATA')" ];
+}
