@@ -9,9 +9,13 @@
           gap: 10px;
           grid-auto-rows: minmax(800px, auto);
       }
-      .left {
+      .left-top {
           grid-column: 1;
-          grid-row: 1 / 2;
+          grid-row: 1;
+      }
+      .left-button {
+          grid-column: 1;
+          grid-row: 2;
       }
       .right-top {
           grid-column: 2;
@@ -26,7 +30,8 @@
   </head>
   <body>
     <div class="container" id="root-obj">
-      <div id="puzzle" class="left">
+      <div id="puzzle" class="left-top"></div>
+      <div id="match-table-side" class="left-button">
       </div>
       <div id="mynetwork" class="right-top"></div>
       <div id="form" class="right-bottom">

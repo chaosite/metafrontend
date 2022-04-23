@@ -3,7 +3,7 @@
         "target": "es2021",
         "module": "es2022",
         "moduleResolution": "node",
-        "lib": ["es2021", "dom", "WebWorker"],
+        "lib": ["es2021", "dom", "WebWorker","dom.iterable"],
         "allowSyntheticDefaultImports": true,
         "downlevelIteration": true,
         "experimentalDecorators": true

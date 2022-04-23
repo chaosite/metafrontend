@@ -162,6 +162,19 @@ function initPuzzle(): void {
     layout.run();
     //cy.reset();
     cy.fit();
+
+    const matchTable = document.getElementById("match-table-side") as HTMLDivElement;
+    cy.nodes().forEach((n,i) => {
+        var queryDiv = document.createElement("div");
+        var queryButton = document.createElement("button");
+        var queryMatches = document.createElement("div");
+        queryButton.innerHTML = n.id();
+        queryMatches.id = "querymatches-"+ n.id();
+        queryDiv.appendChild(queryButton);
+        queryDiv.appendChild(queryMatches);
+        matchTable.appendChild(queryDiv);
+    });
+
 }
 
 // create a network
@@ -233,12 +246,32 @@ function initFunc(): void {
                 result.queryVertices);
             queryResults.display();
         });
+    const queryName = "unionArray";
+    var matchTable = document.getElementById("match-table-side");
+    var queries = [...matchTable.children]
+    queries.forEach(query => {
+        var queryMatches = query.children[1]
+
+        //get the result for each query
+        result.queryResults.forEach(qr => {
+            //var queryMatches = document.getElementById("querymatches-"+queryName);
+            var rdiv = document.createElement("div");
+            rdiv.innerHTML = "";
+            for (var port in result.queryVertices) {
+                if (Object.prototype.hasOwnProperty.call(result.queryVertices, port)) {
+                    rdiv.innerHTML += port +": " + qr[port] +" "; 
+                }
+            }
+            queryMatches.appendChild(rdiv);
+        })
+    })
+
 }
 
 function loadJson(jsonDot: any): void {
     function id2node(id: number): string { return 'n' + id; }
     function id2edge(id: number): string { return 'e' + id; }
-    console.log(jsonDot);
+    //console.log(jsonDot);
     cy.remove(cy.elements());
     cy.remove(cy.edges());
     const constraints = [];
