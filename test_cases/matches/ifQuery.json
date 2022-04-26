@@ -1,0 +1,18 @@
+{
+"queryResults": [
+{
+"ifInput1": [58],
+"1815556070": [72],
+"ifInput2": [69],
+"1333041165": [75],
+"trueSuccessor": [74],
+"falseSuccessor": [73]
+}],
+"queryVertices": {
+"1333041165":"1333041165",
+"1815556070":"1815556070",
+"ifInput1":"ifInput1",
+"ifInput2":"ifInput2",
+"trueSuccessor":"trueSuccessor",
+"falseSuccessor":"falseSuccessor"
+}}

@@ -30,6 +30,7 @@
   </head>
   <body>
     <div class="container" id="root-obj">
+      <label id="queryname" class="left">Loading..</label>
       <div id="puzzle" class="left-top"></div>
       <div id="match-table-side" class="left-button">
       </div>
@@ -39,8 +40,11 @@
           <div >
             <p>
               <button type="button" onclick="executeHandler()">Execute</button>
-              <button type="button" onclick="queryPrevHandler()">Prev</button>
-              <button type="button" onclick="queryNextHandler()">Next</button>
+              <button type="button" onclick="queryPrevResultHandler()">Prev</button>
+              <button type="button" onclick="queryNextResultHandler()">Next</button>
+            </p>
+            <p>
+              <button type="button" onclick="queryNextHandler()">Next Query</button>
             </p>
             <p>
               <input type="checkbox" id="hideExtras" onchange="extrasCheckHandler()">

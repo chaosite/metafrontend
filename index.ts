@@ -1,5 +1,6 @@
 // import * as vis from './vis-wrap';
 const fs = (0 || require)('fs');
+const path = (0 || require)('path');
 import { graphviz as gv, wasmFolder } from '@hpcc-js/wasm';
 wasmFolder("../../node_modules/@hpcc-js/wasm/dist"); // maybe fix later
 import cytoscape from 'cytoscape';
@@ -33,12 +34,14 @@ enum EdgeType {
 class QueryResults {
     _results: { string: string[] }[];
     _query_vertices: { string: string }
+    queryName: {string: string}
     curr: number;
 
-    constructor(results: { string: string[] }[], qVs: { string: string }) {
+    constructor(results: { string: string[] }[], qVs: { string: string }, name: {string: string}) {
         this.curr = 0
         this._results = results;
         this._query_vertices = qVs;
+        this.queryName = name;
     }
 
     display() {
@@ -73,7 +76,8 @@ class QueryResults {
     }
 }
 
-export var queryResults: QueryResults = null;
+export var queryResults: QueryResults[] = null;
+export var selectedQueryResults: QueryResults = null;
 
 function initPuzzle(): void {
     const container = document.getElementById("puzzle");
@@ -238,17 +242,38 @@ function initFunc(): void {
         ],
     });
     const DOTstring = fs.readFileSync('./test_cases/0.dot', 'UTF-8');
-    const result = JSON.parse(fs.readFileSync("./test_cases/0.json", "UTF-8"));
+    //const result = JSON.parse(fs.readFileSync("./test_cases/0.json", "UTF-8"));
+    const directoryPath = './test_cases/group1' 
+    var results = []
+    fs.readdir(directoryPath, function (err, files) {
+        if (err) {
+            return console.log('Unable to scan directory: ' + err);
+        } 
+        files.forEach(function (file) {
+            var fullpath = path.join(directoryPath, file);
+            console.log(fullpath)
+            var json = JSON.parse(fs.readFileSync(fullpath, "UTF-8"))
+            json.queryName = file;
+            results.push(json);
+        });
+    });
+    
     parseDot(DOTstring)
         .then((newGraph) => { loadJson(newGraph); })
         .then(() => {
-            queryResults = new QueryResults(result.queryResults,
-                result.queryVertices);
-            queryResults.display();
-        });
+            queryResults = results.map(r => new QueryResults(r.queryResults,r.queryVertices, r.queryName));
+            selectedQueryResults = queryResults[0];
+            selectedQueryResults.display();
+        })
+        .then(() => {
+            updateQueryName();
+        });;
     const queryName = "unionArray";
     var matchTable = document.getElementById("match-table-side");
     var queries = [...matchTable.children]
+    
+    //todo update this for every result
+    var result = results[0]
     queries.forEach(query => {
         var queryMatches = query.children[1]
 
@@ -407,9 +432,10 @@ export function executeHandler() {
         parseDot(newGraphDot)
             .then((newGraph) => { loadJson(newGraph); })
             .then(() => {
-                queryResults = new QueryResults(result.queryResults,
-                    result.queryVertices);
-                queryResults.display();
+                queryResults = [new QueryResults(result.queryResults,
+                    result.queryVertices, result.queryName)];
+                    selectedQueryResults = queryResults[0];
+                    selectedQueryResults.display();
             });
     }).catch(err => {
         console.error(err);
@@ -417,13 +443,19 @@ export function executeHandler() {
 }
 
 function queryNextHandler() {
-    queryResults.next();
-    queryResults.display();
+    selectedQueryResults = queryResults[(queryResults.indexOf(selectedQueryResults) + 1) % queryResults.length];
+    selectedQueryResults.display();
+    updateQueryName();
 }
 
-function queryPrevHandler() {
-    queryResults.prev();
-    queryResults.display();
+function queryNextResultHandler() {
+    selectedQueryResults.next();
+    selectedQueryResults.display();
+}
+
+function queryPrevResultHandler() {
+    selectedQueryResults.prev();
+    selectedQueryResults.display();
 }
 
 function extrasCheckHandler() {
@@ -431,5 +463,10 @@ function extrasCheckHandler() {
     renderHiding();
     layout.run();
 }
+function updateQueryName(){
+    const queryname = document.getElementById("queryname");
+    if(queryname == undefined) return
+    queryname.innerHTML = "Query " + selectedQueryResults.queryName; 
+}
 
-Object.assign(window, {executeHandler, queryNextHandler, queryPrevHandler, extrasCheckHandler});
+Object.assign(window, {executeHandler, queryNextHandler, queryNextResultHandler, queryPrevResultHandler, extrasCheckHandler});
