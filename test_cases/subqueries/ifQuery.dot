@@ -1,0 +1,13 @@
+digraph ifQuery {
+  n1922729110 [ label="is('IfNode')" ];
+  n296865085 [ label="is('calc.CompareNode')" ];
+  n1787161343 [ label="(?P<ifInput1>)|is('ValueNode')" ];
+  n846375909 [ label="(?P<ifInput2>)|is('ValueNode')" ];
+  n350893833 [ label="(?P<trueSuccessor>)|is('BeginNode')" ];
+  n187553932 [ label="(?P<falseSuccessor>)|is('BeginNode')" ];
+  n296865085 -> n1922729110 [ label="is('DATA')" ];
+  n1922729110 -> n350893833 [ label="(is('CONTROL')) and ((name()) = ('trueSuccessor'))" ];
+  n1922729110 -> n187553932 [ label="(is('CONTROL')) and ((name()) = ('falseSuccessor'))" ];
+  n1787161343 -> n296865085 [ label="(is('DATA')) and ((name()) = ('x'))" ];
+  n846375909 -> n296865085 [ label="(is('DATA')) and ((name()) = ('y'))" ];
+}

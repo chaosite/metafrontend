@@ -1,11 +1,17 @@
 {
     "compilerOptions": {
-        "target": "es2021",
-        "module": "es2022",
+        "target": "esnext",
+        "module": "esnext",
         "moduleResolution": "node",
-        "lib": ["es2021", "dom", "WebWorker"],
+        "lib": ["esnext", "dom", "WebWorker"],
         "allowSyntheticDefaultImports": true,
         "downlevelIteration": true,
-        "experimentalDecorators": true
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "strict": false,
+        "noImplicitThis": true,
+        "isolatedModules": true,
+        "resolveJsonModule": true,
+        "jsx": "preserve",
     }
 }

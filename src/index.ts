@@ -8,6 +8,14 @@ import layoutUtilities from 'cytoscape-layout-utilities';
 import disjointSet from 'disjoint-set';
 import axios from 'axios';
 
+//@ts-ignore
+import App from './components/app.vue';
+import * as Vue from 'vue';
+import * as Vuetify from 'vuetify';
+import { VuetifyOptions } from 'vuetify/framework';
+import * as VuetifyComponents from 'vuetify/components';
+import * as VuetifyDirectives from 'vuetify/directives';
+
 cytoscape.use(layoutUtilities);
 cytoscape.use(fcose);
 
@@ -77,6 +85,19 @@ export var queryResults: QueryResults = null;
 
 // create a network
 function initFunc(): void {
+    const app = Vue.createApp(App);
+    const vuetify = Vuetify.createVuetify(
+        {
+            VuetifyComponents,
+            VuetifyDirectives,
+            theme: { defaultTheme: 'dark' }
+        } as VuetifyOptions);
+
+    app.use(vuetify);
+
+    const appValue = app.mount(document.body);
+    Object.assign(window, { app: appValue });
+    /*
     const container = document.getElementById("mynetwork");
     cy = cytoscape({
         container: container,
@@ -144,9 +165,11 @@ function initFunc(): void {
                 result.queryVertices);
             queryResults.display();
         });
+
+     */
 }
 
-function loadJson(jsonDot: any): void {
+function loadJson(jsonDot: any, cy: cytoscape.Core): void {
     function id2node(id: number): string { return 'n' + id; }
     function id2edge(id: number): string { return 'e' + id; }
     console.log(jsonDot);
@@ -281,7 +304,7 @@ export function executeHandler() {
         const newGraphDot = result.graph;
         console.log(newGraphDot);
         parseDot(newGraphDot)
-            .then((newGraph) => { loadJson(newGraph); })
+            .then((newGraph) => { loadJson(newGraph, cy); })
             .then(() => {
                 queryResults = new QueryResults(result.queryResults,
                     result.queryVertices);
@@ -308,4 +331,4 @@ function extrasCheckHandler() {
     layout.run();
 }
 
-Object.assign(window, {executeHandler, queryNextHandler, queryPrevHandler, extrasCheckHandler});
+Object.assign(window, { executeHandler, queryNextHandler, queryPrevHandler, extrasCheckHandler });

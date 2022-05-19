@@ -1,0 +1,13 @@
+digraph invokeTwoParam {
+  n1706859899 [ label="(?P<scopeBranch>)|is('BeginNode')" ];
+  n557136470 [ label="is('ValueNode')" ];
+  n1319353758 [ label="(?P<invokeScopeOutput>)|(is('InvokeWithExceptionNode')) or (is('InvokeNode'))" ];
+  n823512316 [ label="is('java.MethodCallTargetNode')" ];
+  n818141408 [ label="(?P<invokeScopeInput1>)|is('ValueNode')" ];
+  n942449444 [ label="(?P<invokeScopeInput2>)|is('ValueNode')" ];
+  n823512316 -> n1319353758 [ label="is('DATA')" ];
+  n818141408 -> n823512316 [ label="is('DATA')" ];
+  n942449444 -> n823512316 [ label="is('DATA')" ];
+  n1706859899 -> n557136470 [ label="*|is('CONTROL')" ];
+  n557136470 -> n1319353758 [ label="is('CONTROL')" ];
+}

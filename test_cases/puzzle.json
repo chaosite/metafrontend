@@ -1,0 +1,41 @@
+{
+    "links": [
+        {
+            "src": ["unionArray", "value"],
+            "target": ["loopIterator", "iterator"]
+        },
+        {
+            "src": ["split", "input"],
+            "target": ["loopIterator", "iterator"]
+        },
+        {
+            "src": ["split", "splitOutput1"],
+            "target": ["invokeOneParam1", "invokeInput"]
+        },
+        {
+            "src": ["split", "splitOutput2"],
+            "target": ["invokeOneParam2", "invokeInput"]
+        },
+        {
+            "src": ["ifQuery", "ifInput1"],
+            "target": ["invokeOneParam1", "invokeOutput"]
+        },
+        {
+            "src": ["ifQuery", "ifInput2"],
+            "target": ["invokeOneParam2", "invokeOutput"]
+        },
+        {
+            "src": ["ifQuery", "falseSuccessor"],
+            "target": ["invokeTwoParam", "scopeBranch"]
+        },
+        {
+            "src": ["invokeTwoParam", "invokeScopeInput1"],
+            "target": ["split", "splitOutput1"]
+        },
+        {
+            "src": ["invokeTwoParam", "invokeScopeInput2"],
+            "target": ["split", "splitOutput1"]
+        }
+        
+    ]
+}
