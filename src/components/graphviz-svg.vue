@@ -1,6 +1,8 @@
 <template>
-    <svg ref="drawGraph" class="graphviz" :height="size.y" :width="size.x"
+    <svg ref="svg" class="graphviz" :height="size.y" :width="size.x"
         @mouseover="onMouseOver">
+        <g ref="drawGraph"></g>
+        <slot/>
     </svg>
 </template>
 
@@ -33,7 +35,7 @@ export default {
                 x: svg.width.baseVal.valueInSpecifiedUnits,
                 y: svg.height.baseVal.valueInSpecifiedUnits
             };
-            this.rendered.svg = this.$refs.drawGraph;
+            this.rendered.svg = this.$refs.svg;
             this.$emit('rendered', this.rendered);
         },
         clear() {

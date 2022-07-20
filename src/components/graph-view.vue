@@ -1,7 +1,10 @@
 <template>
   <pan-zoom ref="pz">
     <graphviz-svg ref="graph"
-      :graph="graph" :layoutStylesheet="layoutStylesheet"/>
+      :graph="graph" :layoutStylesheet="layoutStylesheet">
+      <!-- put overlay stuff here -->
+      <circle/>
+    </graphviz-svg>
   </pan-zoom>
 </template>
 
