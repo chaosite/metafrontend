@@ -8,13 +8,9 @@ import layoutUtilities from 'cytoscape-layout-utilities';
 import disjointSet from 'disjoint-set';
 import axios from 'axios';
 
-//@ts-ignore
-import App from './components/app.vue';
-import * as Vue from 'vue';
-import * as Vuetify from 'vuetify';
-import { VuetifyOptions } from 'vuetify/framework';
-import * as VuetifyComponents from 'vuetify/components';
-import * as VuetifyDirectives from 'vuetify/directives';
+import { App } from './app';
+import './index.css';
+
 
 cytoscape.use(layoutUtilities);
 cytoscape.use(fcose);
@@ -84,19 +80,13 @@ class QueryResults {
 export var queryResults: QueryResults = null;
 
 // create a network
-function initFunc(): void {
-    const app = Vue.createApp(App);
-    const vuetify = Vuetify.createVuetify(
-        {
-            VuetifyComponents,
-            VuetifyDirectives,
-            theme: { defaultTheme: 'dark' }
-        } as VuetifyOptions);
+async function initFunc() {
+    let app = new App;
 
-    app.use(vuetify);
+    Object.assign(window, { app });
 
-    const appValue = app.mount(document.body);
-    Object.assign(window, { app: appValue });
+
+    app.openMaster('test_cases/sample.dot');
     /*
     const container = document.getElementById("mynetwork");
     cy = cytoscape({

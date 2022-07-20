@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
-const { VuetifyLoaderPlugin } = require('vuetify-loader');
+const { VuetifyPlugin } = require('webpack-plugin-vuetify');
 
 module.exports = (env, argv) => ({
   name: 'metafrontend',
@@ -19,11 +19,10 @@ module.exports = (env, argv) => ({
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{ loader: 'ts-loader',
-                options: {
-                  appendTsSuffixTo: [/.vue$/],
-                },
-        }],
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/.vue$/],
+        },
         exclude: /node_modules/,
       },
       {
@@ -74,7 +73,7 @@ module.exports = (env, argv) => ({
   },
   optimization: { sideEffects: false },
   plugins: [new VueLoaderPlugin(),
-            new VuetifyLoaderPlugin({ autoImport: true }),
+            new VuetifyPlugin({ autoImport: true }),
             new webpack.DefinePlugin({ 'process': {browser: true, env: {}} }),
             new webpack.ProvidePlugin({ 'Buffer': 'buffer' }),
             new webpack.IgnorePlugin({resourceRegExp: /\/applets\/helpers$/})]
