@@ -1,0 +1,20 @@
+
+svg.graphviz g.graph > polygon {
+    fill: none;
+}
+svg.graphviz g.node > ellipse,
+svg.graphviz g.node > polygon {
+    fill: white;
+    stroke: black;
+}
+svg.graphviz g.cluster > ellipse,
+svg.graphviz g.cluster > polygon,
+svg.graphviz g.cluster > path {
+    fill: transparent;  /* this is to allow hover events */
+    stroke: black;
+    stroke-dasharray: 1pt 1pt;
+}
+svg.graphviz g.edge > path {
+    stroke: black;
+    fill: none;
+}

@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-  import { ref, reactive, onMounted, defineProps, watch } from "vue";
+  import { ref, reactive, onMounted, watch } from "vue";
   import cytoscape from "cytoscape";
   import * as g from "../graphlib";
   import { populatePuzzle } from "../dor";

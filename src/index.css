@@ -1,0 +1,22 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+main { height: 100%}
+
+* {
+    box-sizing: border-box;
+}
+
+.pan-zoom-area {
+    overflow: scroll;
+    height: 100%;
+    padding: 2em;
+    text-align: center;
+}
+
+.pan-zoom-area > svg {
+    zoom: var(--zoom);
+}

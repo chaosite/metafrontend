@@ -3,7 +3,7 @@
         "target": "esnext",
         "module": "esnext",
         "moduleResolution": "node",
-        "lib": ["esnext", "dom", "WebWorker"],
+        "lib": ["esnext", "DOM", "DOM.Iterable", "WebWorker"],
         "allowSyntheticDefaultImports": true,
         "downlevelIteration": true,
         "esModuleInterop": true,
@@ -12,6 +12,7 @@
         "noImplicitThis": true,
         "isolatedModules": true,
         "resolveJsonModule": true,
-        "jsx": "preserve",
+        "allowJs": true,
+        "jsx": "preserve"
     }
 }

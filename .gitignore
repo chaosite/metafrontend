@@ -1,5 +1,8 @@
+.*.swp
+
 # Project exclude paths
 /node_modules/
 /public/
+/build/
 /index.js
 .idea/*
