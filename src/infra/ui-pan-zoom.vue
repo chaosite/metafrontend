@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Pan, Zoom } from '../infra/ui-pan-zoom';
+import { Pan, Zoom } from './ui-pan-zoom';
 
 export default {
   mounted() {

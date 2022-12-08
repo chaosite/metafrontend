@@ -14,8 +14,10 @@
     "graphlib-dot": "^0.6.4",
     "roboto-fontface": "*",
     "splitpanes": "^3.1.1",
+    "svg-pan-zoom": "^3.6.1",
     "tslib": "^2.3.1",
     "vue": "^3.2.31",
+    "vue-svg-pan-zoom": "^2.1.0",
     "vuetify": "^3.0.0-beta.0",
     "webfontloader": "^1.0.0",
     "webpack-plugin-vuetify": "^2.0.0-alpha.11"
@@ -46,5 +48,9 @@
   },
   "browserslist": [
     "Chrome 96"
-  ]
+  ],
+  "scripts": {
+    "build": "webpack",
+    "buildw": "webpack -w"
+  }
 }

@@ -1,6 +1,3 @@
-
-
-
 class PanZoomBase {
     $el: HTMLElement
 
@@ -19,7 +16,7 @@ class PanZoomBase {
 
 
 class Pan extends PanZoomBase {
-    gesture?: {start: PointXY, initialScroll: PointXY}
+    gesture?: { start: PointXY, initialScroll: PointXY }
 
     constructor($el: HTMLElement) {
         super($el);
@@ -40,7 +37,7 @@ class Pan extends PanZoomBase {
 
     onMove(ev: PointerEvent) {
         if (this.gesture) {
-            var {start: o, initialScroll: d} = this.gesture;
+            const {start: o, initialScroll: d} = this.gesture;
             this.setScroll({x: d.x - (ev.x - o.x), y: d.y - (ev.y - o.y)});
             ev.preventDefault();
         }
@@ -56,7 +53,7 @@ class Pan extends PanZoomBase {
 
 
 class Zoom extends PanZoomBase {
-    zoomRange: {min: number, max: number}
+    zoomRange: { min: number, max: number }
     accel: number
 
     areaOffset: PointXY
@@ -73,22 +70,25 @@ class Zoom extends PanZoomBase {
         this.zoom = 1;
         this.pscroll = {x: 0, y: 0};
 
-        this.setZoom = (z) => { /* no default impl; caller should set this */ };
+        this.setZoom = (z) => { /* no default impl; caller should set this */
+        };
 
         this.$el.addEventListener('scroll', () => this.onScroll());
         this.$el.addEventListener('wheel', (ev) => this.onWheel(ev));
     }
 
     onScroll() {
-        var sc = this.getScroll();
+        const sc = this.getScroll();
         if (sc.x !== Math.round(this.pscroll.x) || sc.y !== Math.round(this.pscroll.y))
             this.pscroll = sc;
     }
 
-    adjustZoom(newValue: number, around: PointXY = {x:0, y:0}) {
-        var u = this.zoom, v = newValue,
-            sc = {x: Math.max(0, (this.pscroll.x - around.x) * v / u + around.x),
-                  y: Math.max(0, (this.pscroll.y - around.y) * v / u + around.y)};
+    adjustZoom(newValue: number, around: PointXY = {x: 0, y: 0}) {
+        const u = this.zoom, v = newValue,
+            sc = {
+                x: Math.max(0, (this.pscroll.x - around.x) * v / u + around.x),
+                y: Math.max(0, (this.pscroll.y - around.y) * v / u + around.y)
+            };
         this.zoom = v;
         this.pscroll = sc;
         this.setZoom(v); //Math.pow(5, (v - 100) / 100));
@@ -97,9 +97,11 @@ class Zoom extends PanZoomBase {
 
     onWheel(ev: WheelEvent) {
         if (ev.ctrlKey) {
-            var o = this.areaOffset, r = this.zoomRange,
-                xy = {x: o.x - (ev.pageX - this.$el.offsetLeft),
-                      y: o.y - (ev.pageY - this.$el.offsetTop)},
+            const o = this.areaOffset, r = this.zoomRange,
+                xy = {
+                    x: o.x - (ev.pageX - this.$el.offsetLeft),
+                    y: o.y - (ev.pageY - this.$el.offsetTop)
+                },
                 factor = Math.pow(this.accel, -ev.deltaY / 100);
             this.adjustZoom(bounded(this.zoom * factor, r.min, r.max), xy);
             ev.stopPropagation();
@@ -109,7 +111,7 @@ class Zoom extends PanZoomBase {
 }
 
 
-type PointXY = {x: number, y: number};
+type PointXY = { x: number, y: number };
 type FPointXY = PointXY;  /* just to emphasize that it's floats */
 
 function bounded(val: number, min: number, max: number) {
@@ -121,5 +123,5 @@ function ptround(p: PointXY) {
 }
 
 
-export { Pan, Zoom }
-export type { PointXY, FPointXY }
+export {Pan, Zoom}
+export type {PointXY, FPointXY}

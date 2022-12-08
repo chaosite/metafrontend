@@ -79,8 +79,8 @@ export function initPuzzle(container: HTMLElement): cytoscape.Core {
             {
                 selector: 'node',
                 style: {
-                    'background-color': '#666',
-                    'color': '#fff',
+                    'background-color': 'data(color)',
+                    'color': '#ffffff',
                     'label': 'data(label)',
                     'shape': 'round-rectangle',
                     'width': '11em',
@@ -118,13 +118,24 @@ export function initPuzzle(container: HTMLElement): cytoscape.Core {
     return cy;
 }
 export function populatePuzzle(cy: cytoscape.Core, masterQuery: any): cytoscape.Core {
+    const colorMap = {
+        "unionArray": "#ffff00",
+        "invokeTwoParam": "#00ffff",
+        "loopIterator": "#ff00ff",
+        "split": "#66ff00",
+        "invokeOneParam1": "#000000",
+        "invokeOneParam2": "#707070",
+        "ifQuery": "#2070fe"
+    }
     const nodes = masterQuery.links.map((link) => {
+        console.log(link.src[0])
         return [{
             group: "nodes",
             data: {
                 id: link.src[0],
                 name: link.src[0],
-                label: link.src[0]
+                label: link.src[0],
+                color: colorMap[link.src[0]]
             }
         },
         {
@@ -132,7 +143,8 @@ export function populatePuzzle(cy: cytoscape.Core, masterQuery: any): cytoscape.
             data: {
                 id: link.target[0],
                 name: link.target[0],
-                label: link.target[0]
+                label: link.target[0],
+                color: colorMap[link.target[0]]
             }
         },
         {

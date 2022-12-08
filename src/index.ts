@@ -1,15 +1,16 @@
 // import * as vis from './vis-wrap';
 const fs = (0 || require)('fs');
-import { graphviz as gv, wasmFolder } from '@hpcc-js/wasm';
-wasmFolder("../../node_modules/@hpcc-js/wasm/dist"); // maybe fix later
+import {graphviz as gv, wasmFolder} from '@hpcc-js/wasm';
 import cytoscape from 'cytoscape';
 import fcose from 'cytoscape-fcose';
 import layoutUtilities from 'cytoscape-layout-utilities';
 import disjointSet from 'disjoint-set';
 import axios from 'axios';
 
-import { App } from './app';
+import {App} from './app';
 import './index.css';
+
+wasmFolder("../../node_modules/@hpcc-js/wasm/dist"); // maybe fix later
 
 
 cytoscape.use(layoutUtilities);
@@ -83,85 +84,20 @@ export var queryResults: QueryResults = null;
 async function initFunc() {
     let app = new App;
 
-    Object.assign(window, { app });
+    Object.assign(window, {app});
 
-
-    app.openMaster('test_cases/sample.dot');
-    /*
-    const container = document.getElementById("mynetwork");
-    cy = cytoscape({
-        container: container,
-        style: [ // the stylesheet for the graph
-            {
-                selector: 'node',
-                style: {
-                    'background-color': '#666',
-                    'color': '#fff',
-                    'label': 'data(label)',
-                    'shape': 'round-rectangle',
-                    'width': '11em',
-                    'text-valign': 'center',
-                    'text-wrap': 'ellipsis'
-                }
-            },
-            {
-                selector: 'node.queryHilight',
-                style: {
-                    'background-color': '#EE8',
-                    'color': '#000'
-                }
-            },
-            {
-                selector: '.hidden',
-                style: {
-                    display: 'none'
-                }
-            },
-            {
-                selector: 'edge',
-                style: {
-                    'width': 3,
-                    'line-color': '#ccc',
-                    'target-arrow-color': '#ccc',
-                    'target-arrow-shape': 'triangle',
-                    'curve-style': 'bezier',
-                    'label': 'data(label)',
-                    'text-wrap': 'ellipsis'
-                }
-            },
-            {
-                selector: 'edge[type = "data"]',
-                style: {
-                    'line-color': '#e88',
-                    'target-arrow-color': '#e88',
-                }
-            },
-            {
-                selector: 'edge[type = "control"]',
-                style: {
-                    'line-color': '#88b',
-                    'target-arrow-color': '#88b',
-                }
-            }
-
-        ],
-    });
-    const DOTstring = fs.readFileSync('./test_cases/0.dot', 'UTF-8');
-    const result = JSON.parse(fs.readFileSync("./test_cases/0.json", "UTF-8"));
-    parseDot(DOTstring)
-        .then((newGraph) => { loadJson(newGraph); })
-        .then(() => {
-            queryResults = new QueryResults(result.queryResults,
-                result.queryVertices);
-            queryResults.display();
-        });
-
-     */
+    app.openMaster('test_cases/kruskal1.dot');
 }
 
 function loadJson(jsonDot: any, cy: cytoscape.Core): void {
-    function id2node(id: number): string { return 'n' + id; }
-    function id2edge(id: number): string { return 'e' + id; }
+    function id2node(id: number): string {
+        return 'n' + id;
+    }
+
+    function id2edge(id: number): string {
+        return 'e' + id;
+    }
+
     console.log(jsonDot);
     cy.remove(cy.elements());
     cy.remove(cy.edges());
@@ -181,7 +117,7 @@ function loadJson(jsonDot: any, cy: cytoscape.Core): void {
                 'name': node.name,
                 'extra': extra
             },
-            'position': { x: parseInt(pos[0]), y: -parseInt(pos[1]) }
+            'position': {x: parseInt(pos[0]), y: -parseInt(pos[1])}
         }
     }));
     cy.add(jsonDot.edges.map((edge) => {
@@ -202,17 +138,17 @@ function loadJson(jsonDot: any, cy: cytoscape.Core): void {
         }
 
         if (edge.color == 'red' && edge.label != '?loop') {
-            constraints.push({ 'top': source, 'bottom': target, gap: 60 });
+            constraints.push({'top': source, 'bottom': target, gap: 60});
             switch (edge.label) {
                 case 'trueSuccessor':
-                    constraints.push({ 'left': source, 'right': target, gap: 40 });
+                    constraints.push({'left': source, 'right': target, gap: 40});
                     break;
                 case 'falseSuccessor':
-                    constraints.push({ 'right': source, 'left': target, gap: 40 });
+                    constraints.push({'right': source, 'left': target, gap: 40});
                     break;
                 case 'next':
                 case '???':
-                    constraints.push({ 'top': source, 'bottom': target, gap: 40 });
+                    constraints.push({'top': source, 'bottom': target, gap: 40});
                     valign.add(source);
                     valign.add(target);
                     if (!cy.$id(target).data('label').match((/Merge$/i)))
@@ -226,7 +162,7 @@ function loadJson(jsonDot: any, cy: cytoscape.Core): void {
                 case 'x':
                 case 'y':
                 case 'arguments':
-                    constraints.push({ 'top': source, 'bottom': target, gap: 40 });
+                    constraints.push({'top': source, 'bottom': target, gap: 40});
                     break;
             }
 
@@ -250,8 +186,8 @@ function loadJson(jsonDot: any, cy: cytoscape.Core): void {
         'nodeSeparation': 300,
         'sampleSize': 100,
         'idealEdgeLength': (e) => 250,
-        'fixedNodeConstraint': [{ 'nodeId': 'n0', 'position': { 'x': 0, 'y': 0 } }],
-        'alignmentConstraint': { 'vertical': valign.extract() },
+        'fixedNodeConstraint': [{'nodeId': 'n0', 'position': {'x': 0, 'y': 0}}],
+        'alignmentConstraint': {'vertical': valign.extract()},
         'relativePlacementConstraint': constraints
     };
     layout = cy.layout(layoutOptions);
@@ -294,7 +230,9 @@ export function executeHandler() {
         const newGraphDot = result.graph;
         console.log(newGraphDot);
         parseDot(newGraphDot)
-            .then((newGraph) => { loadJson(newGraph, cy); })
+            .then((newGraph) => {
+                loadJson(newGraph, cy);
+            })
             .then(() => {
                 queryResults = new QueryResults(result.queryResults,
                     result.queryVertices);
@@ -321,4 +259,4 @@ function extrasCheckHandler() {
     layout.run();
 }
 
-Object.assign(window, { executeHandler, queryNextHandler, queryPrevHandler, extrasCheckHandler });
+Object.assign(window, {executeHandler, queryNextHandler, queryPrevHandler, extrasCheckHandler});

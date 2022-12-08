@@ -1,0 +1,501 @@
+[[{
+  "irVertexId": 76,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir76"
+}, {
+  "irVertexId": 79,
+  "query": "not (is('IfNode'))",
+  "queryVertexName": "v2",
+  "vertexName": "ir79"
+}, {
+  "irVertexId": 77,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir77"
+}, {
+  "irVertexId": 85,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir85"
+}, {
+  "irVertexId": 92,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir92"
+}, {
+  "irVertexId": 5,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir5"
+}, {
+  "irVertexId": 80,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir80"
+}, {
+  "irVertexId": 86,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir86"
+}, {
+  "irVertexId": 46,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir46"
+}], [{
+  "irVertexId": 76,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir76"
+}, {
+  "irVertexId": 79,
+  "query": "not (is('IfNode'))",
+  "queryVertexName": "v2",
+  "vertexName": "ir79"
+}, {
+  "irVertexId": 77,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir77"
+}, {
+  "irVertexId": 85,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir85"
+}, {
+  "irVertexId": 92,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir92"
+}, {
+  "irVertexId": 5,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir5"
+}, {
+  "irVertexId": 80,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir80"
+}, {
+  "irVertexId": 89,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir89"
+}, {
+  "irVertexId": 46,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir46"
+}], [{
+  "irVertexId": 76,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir76"
+}, {
+  "irVertexId": 79,
+  "query": "not (is('IfNode'))",
+  "queryVertexName": "v2",
+  "vertexName": "ir79"
+}, {
+  "irVertexId": 77,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir77"
+}, {
+  "irVertexId": 85,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir85"
+}, {
+  "irVertexId": 92,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir92"
+}, {
+  "irVertexId": 92,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir92"
+}, {
+  "irVertexId": 80,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir80"
+}, {
+  "irVertexId": 86,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir86"
+}, {
+  "irVertexId": 46,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir46"
+}], [{
+  "irVertexId": 76,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir76"
+}, {
+  "irVertexId": 79,
+  "query": "not (is('IfNode'))",
+  "queryVertexName": "v2",
+  "vertexName": "ir79"
+}, {
+  "irVertexId": 77,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir77"
+}, {
+  "irVertexId": 85,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir85"
+}, {
+  "irVertexId": 92,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir92"
+}, {
+  "irVertexId": 92,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir92"
+}, {
+  "irVertexId": 80,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir80"
+}, {
+  "irVertexId": 89,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir89"
+}, {
+  "irVertexId": 46,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir46"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 5,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir5"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 181,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir181"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 5,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir5"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 183,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir183"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 5,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir5"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 185,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir185"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 5,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir5"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 208,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir208"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 211,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 181,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir181"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 211,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 183,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir183"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 211,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 185,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir185"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}], [{
+  "irVertexId": 169,
+  "query": "is('LoopBeginNode')",
+  "queryVertexName": "v1",
+  "vertexName": "ir169"
+}, {
+  "irVertexId": 170,
+  "query": "is('ValuePhiNode')",
+  "queryVertexName": "v4",
+  "vertexName": "ir170"
+}, {
+  "irVertexId": 179,
+  "query": "is('IfNode')",
+  "queryVertexName": "v3",
+  "vertexName": "ir179"
+}, {
+  "irVertexId": 211,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "v5",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 211,
+  "query": "is('ValueNode')",
+  "queryVertexName": "v7",
+  "vertexName": "ir211"
+}, {
+  "irVertexId": 173,
+  "query": "is('calc.CompareNode')",
+  "queryVertexName": "v6",
+  "vertexName": "ir173"
+}, {
+  "irVertexId": 208,
+  "query": "(?P<iterator>)|is('java.LoadIndexedNode')",
+  "queryVertexName": "v8",
+  "vertexName": "ir208"
+}, {
+  "irVertexId": 4,
+  "query": "(?P<source>)|is('ValueNode')",
+  "queryVertexName": "v9",
+  "vertexName": "ir4"
+}]]

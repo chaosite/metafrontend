@@ -4,7 +4,7 @@
   </v-responsive>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref, reactive, onMounted } from "vue";
   import cytoscape from "cytoscape";
   import * as g from "../graphlib";

@@ -7,6 +7,10 @@ svg.graphviz g.node > polygon {
     fill: white;
     stroke: black;
 }
+svg.graphviz g.hilight > ellipse,
+svg.graphviz g.hilight > polygon {
+    fill: red;
+}
 svg.graphviz g.cluster > ellipse,
 svg.graphviz g.cluster > polygon,
 svg.graphviz g.cluster > path {

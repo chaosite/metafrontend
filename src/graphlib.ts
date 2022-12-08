@@ -15,12 +15,12 @@ export async function parseDot(dotGraph: string): Promise<any> {
     return JSON.parse(await gv.layout(dotGraph, 'json'));
 }
 
-export function simpleLoadJson(cy: cytoscape.Core, jsonDot: any): cytoscape.Layouts {
+export function simpleLoadJson(cy: cytoscape.Core, jsonDot: any, color: string): cytoscape.Layouts {
     cy.remove(cy.elements());
     cy.remove(cy.edges());
     cy.add(jsonDot.objects.map((node) => ({
         group: 'nodes',
-        data: { id: node._gvid, label: node.label }
+        data: { id: node._gvid, label: node.label, color: color }
     })));
     cy.add(jsonDot.edges.map((edge) => ({
         group: 'edges',

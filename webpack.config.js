@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const { VueLoaderPlugin } = require('vue-loader');
 const { VuetifyPlugin } = require('webpack-plugin-vuetify');
+const path = require('path');
 
 module.exports = (env, argv) => ({
   name: 'metafrontend',
@@ -60,7 +61,7 @@ module.exports = (env, argv) => ({
       path: require.resolve("path-browserify"),
       stream: require.resolve("stream-browserify"),
       crypto: require.resolve("crypto-browserify")
-    }
+    },
   },
   externals: {
     fs: 'commonjs2 fs'

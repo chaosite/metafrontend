@@ -1,26 +1,25 @@
 <template>
-  <v-responsive min-height="400px" min-width="100px">
+  <v-responsive min-height="300px" min-width="100%">
     <div ref="graph" style="height: 100%; width: 100%"></div>
   </v-responsive>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { ref, reactive, onMounted, watch } from "vue";
   import cytoscape from "cytoscape";
   import * as g from "../graphlib";
-  import { populatePuzzle } from "../dor";
   const fs = (0 || require)('fs');
   
   const graph = ref(null);
   const state = reactive({ cy: null });
-  const props = defineProps(['dotJson']);
+  const props = defineProps(['dotJson', 'color']);
   console.log(props.dotJson);
 
   watch(
     () => props.dotJson,
     (curr, prev) => {
       console.log(`In watch, value is ${curr}`);
-      g.simpleLoadJson(state.cy, curr);
+      g.simpleLoadJson(state.cy, curr, props.color);
     }
   );
   
@@ -32,7 +31,7 @@
         {
           selector: 'node',
           style: {
-            'background-color': '#666',
+            'background-color': 'data(color)',
             'color': '#fff',
             'label': 'data(label)',
             'shape': 'round-rectangle',

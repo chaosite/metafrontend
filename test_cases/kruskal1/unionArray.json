@@ -1,0 +1,51 @@
+[[{
+  "irVertexId": 4,
+  "query": "(?P<array>)|is('ValueNode')",
+  "queryVertexName": "n1699268208",
+  "vertexName": "ir4"
+}, {
+  "irVertexId": 29,
+  "query": "is('java.StoreIndexedNode')",
+  "queryVertexName": "n1747810414",
+  "vertexName": "ir29"
+}, {
+  "irVertexId": 18,
+  "query": "(?P<value>)|is('ValueNode')",
+  "queryVertexName": "n1147572458",
+  "vertexName": "ir18"
+}, {
+  "irVertexId": 9,
+  "query": "(?P<index>)|is('ValueNode')",
+  "queryVertexName": "n1309175485",
+  "vertexName": "ir9"
+}, {
+  "irVertexId": 32,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "n1722105026",
+  "vertexName": "ir32"
+}], [{
+  "irVertexId": 46,
+  "query": "(?P<array>)|is('ValueNode')",
+  "queryVertexName": "n1699268208",
+  "vertexName": "ir46"
+}, {
+  "irVertexId": 70,
+  "query": "is('java.StoreIndexedNode')",
+  "queryVertexName": "n1747810414",
+  "vertexName": "ir70"
+}, {
+  "irVertexId": 59,
+  "query": "(?P<value>)|is('ValueNode')",
+  "queryVertexName": "n1147572458",
+  "vertexName": "ir59"
+}, {
+  "irVertexId": 50,
+  "query": "(?P<index>)|is('ValueNode')",
+  "queryVertexName": "n1309175485",
+  "vertexName": "ir50"
+}, {
+  "irVertexId": 72,
+  "query": "is('calc.AddNode')",
+  "queryVertexName": "n1722105026",
+  "vertexName": "ir72"
+}]]
