@@ -10,9 +10,10 @@
             <QueryGraph @select="focusOnSubquery"
                         :masterQuery="compositeQuery?.masterQuery"></QueryGraph>
 
-            <v-row align="center" justify="space-between">
-              <v-btn plain>Prev</v-btn>
-              <v-btn plain>Next</v-btn>
+            <v-row v-if="currentSubquery != null" align="center" justify="space-between">
+              <v-btn @click.stop="decrementResult()">Prev</v-btn>
+              <v-btn @click.stop="incrementResult()">Next</v-btn>
+              <p>Match: {{ getMatchNumber() }} / {{ getNumberOfMatches() }}</p>
             </v-row>
 
             <SubqueryGraph :dotJson="getSubquery(currentSubquery)" :color="subqueryColor"
@@ -20,14 +21,9 @@
           </v-container>
         </pane>
         <pane :size="100 - (drawer ? drawerSize : 0)">
-          <graph-view ref="program" :graph="graph" :results="getResults(currentSubquery)" :current-result="0"/>
+          <graph-view ref="program" :graph="graph" :results="this.compositeQuery?.subqueryResults" :current-result="0"/>
         </pane>
       </splitpanes>
-      <!-- 
-      <v-card>
-        <ResultGraph></ResultGraph>
-      </v-card>
-       -->
     </v-main>
   </v-app>
 </template>
@@ -43,13 +39,14 @@
 </style>
 
 <script lang="ts">
+// @ts-ignore
 import {Splitpanes, Pane} from 'splitpanes';
 import 'splitpanes/dist/splitpanes.css';
 
 import ResultGraph from './ResultGraph.vue';
 import QueryGraph from './QueryGraph.vue';
 import SubqueryGraph from './SubqueryGraph.vue';
-import {CompositeQuery} from '../queries';
+import {CompositeQuery, Matches, Result} from '../queries';
 
 import GraphView from './graph-view.vue';
 import GraphvizSvg from './graphviz-svg.vue';
@@ -81,13 +78,36 @@ export default defineComponent({
     focusOnSubquery({id, node}) {
       this.currentSubquery = id;
       this.subqueryColor = node._private.style["background-color"].strValue;
-      console.log(id)
+     // console.log(id)
     },
-    getSubquery(id) {
+    getSubquery(this: {compositeQuery: CompositeQuery | undefined}, id) {
       return this.compositeQuery?.subqueries.get(id);
     },
     getResults(id) {
       return this.compositeQuery?.subqueryResults?.get(id);
+    },
+    incrementResult() {
+      const result = this.compositeQuery?.subqueryResults?.get(this.currentSubquery)
+
+      if (result && result.selected < result.matches.length - 1)
+        result.selected++
+    },
+    decrementResult() {
+      const result = this.compositeQuery?.subqueryResults?.get(this.currentSubquery)
+      if (result && result.selected > 0)
+        result.selected--
+    },
+    getMatchNumber(): number {
+      if (!this.compositeQuery || !this.currentSubquery)
+        return null
+
+      return this.compositeQuery?.subqueryResults?.get(this.currentSubquery).selected + 1
+    },
+    getNumberOfMatches(): number {
+      if (!this.compositeQuery || !this.currentSubquery)
+        return null
+
+      return this.compositeQuery?.subqueryResults.get(this.currentSubquery).matches.length
     }
   },
   async mounted() {

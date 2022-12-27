@@ -7,10 +7,42 @@ svg.graphviz g.node > polygon {
     fill: white;
     stroke: black;
 }
-svg.graphviz g.hilight > ellipse,
-svg.graphviz g.hilight > polygon {
-    fill: red;
+
+svg.graphviz g.hilight-ifQuery > ellipse,
+svg.graphviz g.hilight-ifQuery > polygon {
+    fill: #2070fe;
 }
+
+svg.graphviz g.hilight-invokeOneParam1 > ellipse,
+svg.graphviz g.hilight-invokeOneParam1 > polygon {
+    fill: #000000;
+}
+
+svg.graphviz g.hilight-invokeOneParam2 > ellipse,
+svg.graphviz g.hilight-invokeOneParam2 > polygon {
+    fill: #707070;
+}
+
+svg.graphviz g.hilight-invokeTwoParam > ellipse,
+svg.graphviz g.hilight-invokeTwoParam > polygon {
+    fill: #00ffff;
+}
+
+svg.graphviz g.hilight-loopIterator > ellipse,
+svg.graphviz g.hilight-loopIterator > polygon {
+    fill: #ff00ff;
+}
+
+svg.graphviz g.hilight-split > ellipse,
+svg.graphviz g.hilight-split > polygon {
+    fill: #66ff00;
+}
+
+svg.graphviz g.hilight-unionArray > ellipse,
+svg.graphviz g.hilight-unionArray > polygon {
+    fill: #ffff00;
+}
+
 svg.graphviz g.cluster > ellipse,
 svg.graphviz g.cluster > polygon,
 svg.graphviz g.cluster > path {

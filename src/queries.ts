@@ -4,14 +4,20 @@ import {parseDot} from './graphlib';
 
 type MasterQuery = any;
 export type DotJson = any;
-export type ResultDotJson = any;
+export type Matches = Array<Array<{ vertexName: String }>>;
+
+export type Result = {
+    color: string,
+    selected: number,
+    matches: Matches
+}
 
 export class CompositeQuery {
     masterQuery: MasterQuery;
     subqueries: Map<String, DotJson>;
-    subqueryResults: Map<String, ResultDotJson>;
+    subqueryResults: Map<String, Result>;
 
-    constructor(masterQuery: MasterQuery, subqueries: Map<String, DotJson>, subqueryResults: Map<String, ResultDotJson>) {
+    constructor(masterQuery: MasterQuery, subqueries: Map<String, DotJson>, subqueryResults: Map<String, Result>) {
         this.masterQuery = masterQuery;
         this.subqueries = subqueries;
         this.subqueryResults = subqueryResults
@@ -28,8 +34,12 @@ export class CompositeQuery {
         const subqueryResults = fs.readdirSync(subqueryResultsDir).map(
             filename =>
                 [filename.replace(/\.json$/, ""),
-                    JSON.parse(fs.readFileSync(path.join(subqueryResultsDir, filename),
-                        "utf-8"))] as [String, ResultDotJson]
+                    {
+                        matches: JSON.parse(fs.readFileSync(path.join(subqueryResultsDir, filename),
+                            "utf-8")),
+                        color: "red",
+                        selected: 0
+                    }] as [String, Result]
         );
 
         return new CompositeQuery(puzzleJson, new Map(subqueries), new Map(subqueryResults));

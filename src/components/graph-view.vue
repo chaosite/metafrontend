@@ -17,41 +17,45 @@
 <script lang="ts">
 
 import {SvgPanZoom} from "vue-svg-pan-zoom";
+// @ts-ignore
 import GraphvizSvg from './graphviz-svg.vue';
-import {ResultDotJson} from '../queries';
+import {Matches, Result} from '../queries';
 import {defineComponent, PropType} from "vue";
+
 
 export default defineComponent({
   props: {
     'graph': Object as PropType<any>,
     'layoutStylesheet': String,
-    'results': Object as PropType<ResultDotJson>
+    'results': Object as PropType<Map<String, Result>>,
+    'currentResult': String,
   },
   data() {
     return {
       svgpanzoom: null as typeof SvgPanZoom,
-      currentResult: 0
     }
   },
   mounted() {
-    this.$watch(() => this.currentResult, h => {
-      if (h >= 0 && h < this.results.length) {
-        /* do the thing */
-      } else {
-        this.currentResult = Math.min(this.results.length, Math.max(0, h));
-      }
-      console.log(this.results[this.currentResult])
-    }, {})
     this.$watch(() => this.results, h => {
+      if (!(this.$refs.graph as typeof GraphvizSvg).rendered)
+        return
       for (let {el, _} of (this.$refs.graph as typeof GraphvizSvg).rendered.iterNodeElements()) {
-        el.classList.remove("hilight")
+        const toRemove = []
+        el.classList.forEach(value => {
+          if (value.startsWith("hilight"))
+            toRemove.push(value)
+        })
+        toRemove.forEach(value => {
+          el.classList.remove(value)
+        })
       }
-      for (let result of this.results[this.currentResult]) {
-        let e = (this.$refs.graph as typeof GraphvizSvg).rendered.elementFromId(result.vertexName)
-        e.classList.add("hilight")
+      for (let [subquery, result] of this.results) {
+        for (let match of result.matches[result.selected]) {
+          let e = (this.$refs.graph as typeof GraphvizSvg).rendered.elementFromId(match.vertexName)
+          e.classList.add("hilight-" + subquery)
+        }
       }
-      console.log(this.results[this.currentResult])
-    }, {})
+    }, {deep: true})
   },
   components: {SvgPanZoom, GraphvizSvg},
   methods: {
